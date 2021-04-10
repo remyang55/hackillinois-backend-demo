@@ -15,13 +15,13 @@ router.get("/contacts", async (req, res) => {
 
 // Get specific contact
 router.get("/contacts/:id", async (req, res) => {
-	try {
-		const contact = await Contact.findOne({ _id: req.params.id });
-		res.send(contact);
-	} catch {
-		res.status(404);
-		res.send({ error: "ID incorrect: Post doesn't exist" });
-	}
+    try {
+        const contact = await Contact.findOne({ _id: req.params.id });
+        res.send(contact);
+    } catch {
+        res.status(404);
+        res.send({ error: "ID incorrect: Post doesn't exist" });
+    }
 })
 
 // Create new contact
@@ -43,36 +43,36 @@ router.post("/contacts", async (req, res) => {
 
 // Update existing contact
 router.patch("/contacts/:id", async (req, res) => {
-	try {
-		const contact = await Contact.findOne({ _id: req.params.id });
+    try {
+        const contact = await Contact.findOne({ _id: req.params.id });
 
-		if (req.body.name) {
-			contact.name = req.body.name;
-		}
-		if (req.body.phone) {
-			contact.phone = req.body.phone;
-		}
+        if (req.body.name) {
+            contact.name = req.body.name;
+        }
+        if (req.body.phone) {
+            contact.phone = req.body.phone;
+        }
         if (req.body.titles) {
             contact.titles = req.body.titles;
         }
 
-		await contact.save();
-		res.send(contact);
-	} catch {
-		res.status(404);
-		res.send({ error: "ID incorrect: Post doesn't exist" });
-	}
+        await contact.save();
+        res.send(contact);
+    } catch {
+        res.status(404);
+        res.send({ error: "ID incorrect: Post doesn't exist" });
+    }
 });
 
 // Delete contact
 router.delete("/contacts/:id", async (req, res) => {
-	try {
-		await Contact.deleteOne({ _id: req.params.id });
-		res.status(204).send();
-	} catch {
-		res.status(404);
-		res.send({ error: "ID incorrect: Post doesn't exist" });
-	}
+    try {
+        await Contact.deleteOne({ _id: req.params.id });
+        res.status(204).send();
+    } catch {
+        res.status(404);
+        res.send({ error: "ID incorrect: Post doesn't exist" });
+    }
 });
 
 module.exports = router;

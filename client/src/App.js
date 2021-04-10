@@ -72,7 +72,7 @@ class App extends Component {
         if (this.state.contacts) {
             contactList = this.state.contacts.map((contact, i) =>
                 <li style={{ textAlign: "left", marginBottom: "1em" }}>
-                    <strong>{contact.name}, {contact.phone}</strong>
+                    <strong>{contact.name}, Phone: {contact.phone}</strong>
                     <form onSubmit={this.updateContact}>
                         <label>Name: <input type="text" name="name" /> </label>
                         <label>Phone: <input type="text" name="phone" /> </label>
@@ -105,7 +105,7 @@ class App extends Component {
                             <label>Name: <input type="text" name="name" /> </label>
                             <label>Phone: <input type="text" name="phone" /> </label>
                             <br /><br />
-                            <input type="submit" value="Submit" />
+                            <input type="submit" value="Add" />
                         </form>
                     </div>
                 </div>
